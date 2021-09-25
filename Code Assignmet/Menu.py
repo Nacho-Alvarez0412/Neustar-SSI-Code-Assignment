@@ -26,7 +26,7 @@ class Menu:
 
         return
 
-    def inputLoop(self):
+    def inputLoopIPs(self):
         print("Input server IPs separated by comma: ")
         ips = input().split(",")
         validatedIPs = list(map(self.conexMgr.validIP, ips))
@@ -50,16 +50,35 @@ class Menu:
             print(connection.ipAddress)
         return
 
+    def inputLoopKeys(self):
+        oneForAll = False
+        keyPath = ""
+        for connection in self.sshConnections:
+            if(not oneForAll):
+                print("\nInput key path for stablishing SSH Connection: ")
+                keyPath = input()
+
+                print("\nDo you want to use this key for all current connections? Y/N")
+                decision = input().capitalize()
+
+                if decision == "Y" or decision == "YES":
+                    oneForAll = True
+
+            connection.pKey = keyPath
+
+        return
+
     def mainMenu(self):
 
         self.displayHeader()
-        ips = self.inputLoop()
+        ips = self.inputLoopIPs()
 
         if (len(ips) > 0):
             for ip in ips:
                 self.sshConnections.append(SSHConnection(ip, "", "", ""))
             print("\nThe following IPs were loaded: ")
             self.displayIPs()
+            self.inputLoopKeys()
 
         else:
             print("No IP addresses were loaded")
