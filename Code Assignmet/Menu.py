@@ -1,11 +1,18 @@
 # IMPORTS
+from typing import List
 from ConnectionManager import *
+from SSHConnection import *
 
 
 class Menu:
-    conexMgr = ConnectionManager()
-    sshConnections = []
-    logger = None
+    conexMgr: ConnectionManager
+    sshConnections: List[SSHConnection]
+    logger: str
+
+    def __init__(self):
+        self.conexMgr = ConnectionManager()
+        self.sshConnections = []
+        self.logger = ""
 
     def displayHeader(self):
 
@@ -28,7 +35,7 @@ class Menu:
 
             validatedIPs.remove(None)
 
-            print("Retype the invalid ip addresses (or enter '.' to skip): ")
+            print("\nRetype the invalid ip addresses (or enter '.' to skip): ")
             ips = input().split(",")
 
             if "." in ips:
@@ -38,17 +45,24 @@ class Menu:
 
         return list(dict.fromkeys(validatedIPs))  # REMOVES DUPLICATES
 
-    def displayIPs(self, ips):
-        for ip in ips:
-            print(ip)
+    def displayIPs(self):
+        for connection in self.sshConnections:
+            print(connection.ipAddress)
         return
 
     def mainMenu(self):
 
         self.displayHeader()
         ips = self.inputLoop()
-        print("The following IPs were loaded: ")
-        self.displayIPs(ips)
+
+        if (len(ips) > 0):
+            for ip in ips:
+                self.sshConnections.append(SSHConnection(ip, "", "", ""))
+            print("\nThe following IPs were loaded: ")
+            self.displayIPs()
+
+        else:
+            print("No IP addresses were loaded")
 
         return
 
