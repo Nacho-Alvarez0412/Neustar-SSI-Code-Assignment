@@ -79,6 +79,10 @@ class Menu:
             print("\nThe following IPs were loaded: ")
             self.displayIPs()
             self.inputLoopKeys()
+            print("\n Executing logging script")
+
+            for connection in self.sshConnections:
+                self.conexMgr.connect(connection)
 
         else:
             print("No IP addresses were loaded")
