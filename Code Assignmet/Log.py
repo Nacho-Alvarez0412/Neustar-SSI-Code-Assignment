@@ -1,3 +1,5 @@
+# Class that stores the log for proper output info a file
+
 class Log:
     runningP: str
     top3CPU: str

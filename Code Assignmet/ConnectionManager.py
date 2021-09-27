@@ -3,10 +3,15 @@ import ipaddress
 from paramiko import SSHClient, AutoAddPolicy
 from SSHConnection import *
 
+# Class in charge of stablishing SSH connection to each Virtual Machine
+
 
 class ConnectionManager:
     client: SSHClient
 
+    # Input: A valid ipv4 address as a string
+    # Description: Verifies if input is a valid ipv4 Address
+    # Output: A ipv4.ipAdress class
     def validIP(self, address):
         try:
             ip = ipaddress.ip_address(address)
@@ -16,6 +21,9 @@ class ConnectionManager:
             print("\nIP address {} is not valid".format(address))
             return None
 
+    # Input: A valid SSH Connection class, with the information for stablishing th connection
+    # Description: Stablishes SSH connection, executes logging commands and stores its values in the log attribute of SSHConnection
+    #Output: None
     def connect(self, sshConnection: SSHConnection):
         self.client = SSHClient()
         self.client.set_missing_host_key_policy(AutoAddPolicy())

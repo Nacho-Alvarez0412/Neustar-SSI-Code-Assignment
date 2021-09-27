@@ -3,6 +3,8 @@ from typing import List
 from ConnectionManager import *
 from SSHConnection import *
 
+# Class that displays menu
+
 
 class Menu:
     conexMgr: ConnectionManager
@@ -14,6 +16,9 @@ class Menu:
         self.sshConnections = []
         self.logger = ""
 
+    # Input: None
+    # Description: Displays the header in commandline
+    # Output: None
     def displayHeader(self):
 
         print("\n")
@@ -26,6 +31,9 @@ class Menu:
 
         return
 
+    # Input: None
+    # Description: Receives the IPs separated by commas, in case one ip is invalid, stores the rest and ask for the invalid again
+    # Output: The list of IPS verified and free of duplicates
     def inputLoopIPs(self):
         print("Input server IPs separated by comma: ")
         ips = input().split(",")
@@ -45,11 +53,20 @@ class Menu:
 
         return list(dict.fromkeys(validatedIPs))  # REMOVES DUPLICATES
 
+    # Input: None
+    # Description: Display the loaded IPs for user validation
+    # Output: None
     def displayIPs(self):
         for connection in self.sshConnections:
             print(connection.ipAddress)
         return
 
+    # Input: None
+    # Description: Receives the full path of each of the SSH keys needed for the connection
+    # Output: None
+
+    # Important note: For AWS VM the .pem key can be used, for other virtual machines
+    # a OpenSSH private key format is needed in orther for paramiko to work.
     def inputLoopKeys(self):
         oneForAll = False
         keyPath = ""
@@ -68,6 +85,9 @@ class Menu:
 
         return
 
+    # Input: None
+    # Description: Receives the user of each of the VMs that is desired to stablish a connection
+    # Output: None
     def inputLoopUser(self):
         oneForAll = False
         user = ""
@@ -85,6 +105,10 @@ class Menu:
             connection.user = user
 
         return
+
+    # Input: None
+    # Description: Displays the main menu, stablishes connection and outputs the logs in .txt files
+    # Output: None
 
     def mainMenu(self):
 
@@ -106,7 +130,9 @@ class Menu:
 
         else:
             print("No IP addresses were loaded")
+            return
 
+        print("\n\nAll logs have been realized successfully, they can be found by the hostname of each logged system")
         return
 
 
