@@ -79,7 +79,7 @@ class Menu:
             print("\nThe following IPs were loaded: ")
             self.displayIPs()
             self.inputLoopKeys()
-            print("\n Executing logging script")
+            print("\nExecuting logging script")
 
             for connection in self.sshConnections:
                 self.conexMgr.connect(connection)

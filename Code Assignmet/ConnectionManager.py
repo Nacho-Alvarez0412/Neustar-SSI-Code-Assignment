@@ -23,10 +23,25 @@ class ConnectionManager:
         self.client.connect(sshConnection.ipAddress.exploded,
                             username="ubuntu", key_filename=sshConnection.pKey)
 
-        stdin, stdout, stderr = self.client.exec_command("hostname")
+        # Running Processes
+        # ps -eo pid,ppid,cmd
+
+        # Top 3 Running by CPU
+        # ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 4
+
+        # Top 3 Running by Memory
+        # ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -n 4
+
+        # Capacity left on VM Human Readable
+        #df -h
+
+        # Capacity left on VM Machine Readable
+        # df
+
+        stdin, stdout, stderr = self.client.exec_command("ps -e")
 
         if stdout.channel.recv_exit_status() == 0:
-            print(f'STDOUT: {stdout.read().decode("utf8")}')
+            print(f'STDOUT:\n {stdout.read().decode("utf8")}')
 
         else:
             print(f'STDERR: {stderr.read().decode("utf8")}')
