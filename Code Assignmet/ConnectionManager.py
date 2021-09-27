@@ -21,7 +21,7 @@ class ConnectionManager:
         self.client.set_missing_host_key_policy(AutoAddPolicy())
         self.client.load_system_host_keys()
         self.client.connect(sshConnection.ipAddress.exploded,
-                            username="ubuntu", key_filename=sshConnection.pKey)
+                            username=sshConnection.user, key_filename=sshConnection.pKey)
 
         # Running Processes
         # ps -eo pid,ppid,cmd
@@ -38,13 +38,33 @@ class ConnectionManager:
         # Capacity left on VM Machine Readable
         # df
 
-        stdin, stdout, stderr = self.client.exec_command("ps -e")
+        commands = ["hostname", "ps -eo pid,ppid,cmd", "ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 4",
+                    "ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -n 4", "df -h", "df"]
 
-        if stdout.channel.recv_exit_status() == 0:
-            print(f'STDOUT:\n {stdout.read().decode("utf8")}')
+        cont = 0
 
-        else:
-            print(f'STDERR: {stderr.read().decode("utf8")}')
+        for command in commands:
+
+            stdin, stdout, stderr = self.client.exec_command(command)
+
+            if stdout.channel.recv_exit_status() == 0:
+                response = stdout.read().decode("utf8")
+
+                if (cont == 0):
+                    sshConnection.host = response
+                if (cont == 1):
+                    sshConnection.log.runningP = response
+                if (cont == 2):
+                    sshConnection.log.top3CPU = response
+                if (cont == 3):
+                    sshConnection.log.top3Mem = response
+                if (cont == 4):
+                    sshConnection.log.capH = response
+                if (cont == 5):
+                    sshConnection.log.capM = response
+            else:
+                print(f'STDERR: {stderr.read().decode("utf8")}')
+            cont += 1
 
         stdin.close()
         stdout.close()

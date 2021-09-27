@@ -68,6 +68,24 @@ class Menu:
 
         return
 
+    def inputLoopUser(self):
+        oneForAll = False
+        user = ""
+        for connection in self.sshConnections:
+            if(not oneForAll):
+                print("\nInput user for stablishing SSH Connection: ")
+                user = input()
+
+                print("\nDo you want to use this user for all current connections? Y/N")
+                decision = input().capitalize()
+
+                if decision == "Y" or decision == "YES":
+                    oneForAll = True
+
+            connection.user = user
+
+        return
+
     def mainMenu(self):
 
         self.displayHeader()
@@ -79,10 +97,12 @@ class Menu:
             print("\nThe following IPs were loaded: ")
             self.displayIPs()
             self.inputLoopKeys()
+            self.inputLoopUser()
             print("\nExecuting logging script")
 
             for connection in self.sshConnections:
                 self.conexMgr.connect(connection)
+                connection.logOutput()
 
         else:
             print("No IP addresses were loaded")
