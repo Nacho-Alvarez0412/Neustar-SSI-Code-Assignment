@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['Menu.py'],
-             pathex=['D:\\Repositorios\\Neustar SSI Code Assignment\\Code Assignmet'],
+             pathex=['/home/ignacio/Repositorios/Neustar-SSI-Code-Assignment/Code Assignmet'],
              binaries=[],
              datas=[],
              hiddenimports=[],

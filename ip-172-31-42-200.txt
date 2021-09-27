@@ -1,0 +1,172 @@
+Server Ip: 18.118.133.97
+
+INIT OF LOG
+
+CURRENT RUNNING PROCESSES
+
+     PID    PPID CMD
+      1       0 /lib/systemd/systemd --system --deserialize 32
+      2       0 [kthreadd]
+      3       2 [rcu_gp]
+      4       2 [rcu_par_gp]
+      6       2 [kworker/0:0H-kblockd]
+      9       2 [mm_percpu_wq]
+     10       2 [ksoftirqd/0]
+     11       2 [rcu_sched]
+     12       2 [migration/0]
+     13       2 [cpuhp/0]
+     14       2 [kdevtmpfs]
+     15       2 [netns]
+     16       2 [rcu_tasks_kthre]
+     17       2 [kauditd]
+     18       2 [khungtaskd]
+     19       2 [oom_reaper]
+     20       2 [writeback]
+     21       2 [kcompactd0]
+     22       2 [ksmd]
+     23       2 [khugepaged]
+     69       2 [kintegrityd]
+     70       2 [kblockd]
+     71       2 [blkcg_punt_bio]
+     72       2 [tpm_dev_wq]
+     73       2 [ata_sff]
+     74       2 [md]
+     75       2 [edac-poller]
+     76       2 [devfreq_wq]
+     77       2 [watchdogd]
+     80       2 [kswapd0]
+     81       2 [ecryptfs-kthrea]
+     83       2 [kthrotld]
+     84       2 [xenbus]
+     85       2 [xenwatch]
+     86       2 [nvme-wq]
+     87       2 [nvme-reset-wq]
+     88       2 [nvme-delete-wq]
+     89       2 [scsi_eh_0]
+     90       2 [scsi_tmf_0]
+     91       2 [scsi_eh_1]
+     92       2 [scsi_tmf_1]
+     94       2 [ipv6_addrconf]
+    103       2 [kstrp]
+    106       2 [kworker/u31:0]
+    107       2 [kworker/0:1H-kblockd]
+    120       2 [jbd2/xvda1-8]
+    121       2 [ext4-rsv-conver]
+    210       2 [cryptd]
+    266       2 [kaluad]
+    267       2 [kmpath_rdacd]
+    268       2 [kmpathd]
+    269       2 [kmpath_handlerd]
+    270       1 /sbin/multipathd -d -s
+    278       2 [loop0]
+    280       2 [loop1]
+    282       2 [loop2]
+    284       2 [loop3]
+    442       1 /usr/lib/accountsservice/accounts-daemon
+    443       1 /usr/sbin/acpid
+    450       1 /usr/sbin/cron -f
+    451       1 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    462       1 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+    464       1 /usr/sbin/rsyslogd -n -iNONE
+    466       1 /lib/systemd/systemd-logind
+    469       1 /usr/sbin/atd -f
+    570       1 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220
+    611       1 /sbin/agetty -o -p -- \u --noclear tty1 linux
+    616       1 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+    634       1 sshd: /usr/sbin/sshd -D -o AuthorizedKeysCommand /usr/share/ec2-instance-connect/eic_run_authorized_keys %u %f -o AuthorizedKeysCommandUser ec2-instance-connect [listener] 0 of 10-100 startups
+   2623       2 [loop4]
+   2765       2 [loop5]
+   2777       1 /usr/lib/snapd/snapd
+   3006       2 [loop6]
+   3112       2 [loop7]
+   3206       2 [loop8]
+   3750       1 /snap/amazon-ssm-agent/4046/amazon-ssm-agent
+   3780    3750 /snap/amazon-ssm-agent/4046/ssm-agent-worker
+  24292       1 /lib/systemd/systemd-udevd
+  29348       1 /lib/systemd/systemd-networkd
+  29362       1 /lib/systemd/systemd-resolved
+  29365       1 /lib/systemd/systemd-journald
+  29457       1 /lib/systemd/systemd-timesyncd
+  31515       2 [xfsalloc]
+  31516       2 [xfs_mru_cache]
+  39339       1 /usr/lib/policykit-1/polkitd --no-debug
+  59303       2 [kworker/0:1-cgroup_destroy]
+  60146       2 [kworker/u30:2-events_unbound]
+  60589       2 [kworker/u30:1-events_power_efficient]
+  60677       2 [kworker/0:0-memcg_kmem_cache]
+  60723     634 sshd: ubuntu [priv]
+  60726   24292 /lib/systemd/systemd-udevd
+  60727   24292 /lib/systemd/systemd-udevd
+  60728   24292 /lib/systemd/systemd-udevd
+  60729   24292 /lib/systemd/systemd-udevd
+  60730   24292 /lib/systemd/systemd-udevd
+  60731   24292 /lib/systemd/systemd-udevd
+  60732   24292 /lib/systemd/systemd-udevd
+  60733   24292 /lib/systemd/systemd-udevd
+  60734   24292 /lib/systemd/systemd-udevd
+  60735   24292 /lib/systemd/systemd-udevd
+  60736       1 /lib/systemd/systemd --user
+  60737       2 [kworker/0:2-events]
+  60738   60736 (sd-pam)
+  60834   60723 sshd: ubuntu@notty
+  60836   60834 ps -eo pid,ppid,cmd
+
+
+TOP 3 APPLICATIONS WITH MORE CPU USAGE 
+
+     PID    PPID CMD                         %CPU
+  60736       1 /lib/systemd/systemd --user  1.0
+  60723     634 sshd: ubuntu [priv]          0.5
+      1       0 /lib/systemd/systemd --syst  0.0
+
+
+TOP 3 APPLICATIONS WITH MORE MEMORY USAGE 
+
+     PID    PPID CMD                         %MEM
+   2777       1 /usr/lib/snapd/snapd         2.5
+   3780    3750 /snap/amazon-ssm-agent/4046  2.1
+  29365       1 /lib/systemd/systemd-journa  1.8
+
+
+LEFT CAPACITY HUMAN READABLE 
+
+ Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       7.7G  2.0G  5.8G  26% /
+devtmpfs        484M     0  484M   0% /dev
+tmpfs           490M     0  490M   0% /dev/shm
+tmpfs            98M  804K   98M   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           490M     0  490M   0% /sys/fs/cgroup
+/dev/loop0       34M   34M     0 100% /snap/amazon-ssm-agent/3552
+/dev/loop1       56M   56M     0 100% /snap/core18/1997
+/dev/loop2       71M   71M     0 100% /snap/lxd/19647
+/dev/loop3       33M   33M     0 100% /snap/snapd/11588
+/dev/loop4       33M   33M     0 100% /snap/snapd/13170
+/dev/loop5       56M   56M     0 100% /snap/core18/2128
+/dev/loop6       62M   62M     0 100% /snap/core20/1081
+/dev/loop7       25M   25M     0 100% /snap/amazon-ssm-agent/4046
+/dev/loop8       68M   68M     0 100% /snap/lxd/21545
+tmpfs            98M     0   98M   0% /run/user/1000
+
+
+LEFT CAPACITY MACHINE READABLE 
+
+ Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2050356   5998704  26% /
+devtmpfs          495236       0    495236   0% /dev
+tmpfs             501024       0    501024   0% /dev/shm
+tmpfs             100208     804     99404   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501024       0    501024   0% /sys/fs/cgroup
+/dev/loop0         34176   34176         0 100% /snap/amazon-ssm-agent/3552
+/dev/loop1         56832   56832         0 100% /snap/core18/1997
+/dev/loop2         72192   72192         0 100% /snap/lxd/19647
+/dev/loop3         33152   33152         0 100% /snap/snapd/11588
+/dev/loop4         33152   33152         0 100% /snap/snapd/13170
+/dev/loop5         56832   56832         0 100% /snap/core18/2128
+/dev/loop6         63360   63360         0 100% /snap/core20/1081
+/dev/loop7         25600   25600         0 100% /snap/amazon-ssm-agent/4046
+/dev/loop8         68864   68864         0 100% /snap/lxd/21545
+tmpfs             100204       0    100204   0% /run/user/1000
+
+
